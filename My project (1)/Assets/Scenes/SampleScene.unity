@@ -148,10 +148,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c8baa72b118296468647782f8ad932a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 15
   charName: enemy one
-  minDamage: 0
-  maxDamage: 0
+  minDamage: 2
+  maxDamage: 4
 --- !u!4 &297192538
 Transform:
   m_ObjectHideFlags: 0
@@ -739,6 +739,55 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &644420046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 644420048}
+  - component: {fileID: 644420047}
+  m_Layer: 0
+  m_Name: PoisDagger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &644420047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644420046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2ea3e75d9ae674f8a217edf12563a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: poisdagger
+  minDamage: 1
+  maxDamage: 2
+  poisDamage: 4
+  poisCount: 2
+--- !u!4 &644420048
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644420046}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 875387062}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &758028667
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,7 +870,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 758028670}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1161429728}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: PlayerAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &758028670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -889,9 +950,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71afe2cb36ca57e4382e91fbd2f43f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 30
   charName: player one
-  activeWeapon: {fileID: 0}
+  activeWeapon: {fileID: 644420047}
 --- !u!4 &875387062
 Transform:
   m_ObjectHideFlags: 0
@@ -904,7 +965,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1449169076}
+  - {fileID: 644420048}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &893751623
@@ -1072,8 +1135,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a75488b0b89988542b46d72130fbad0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
-  Enemy: {fileID: 0}
+  Player: {fileID: 875387061}
+  Enemy: {fileID: 297192537}
+  playerName: {fileID: 893751625}
+  playerHP: {fileID: 1828268260}
+  enemyName: {fileID: 522812976}
+  enemyHP: {fileID: 584735420}
 --- !u!4 &1161429729
 Transform:
   m_ObjectHideFlags: 0
@@ -1089,6 +1156,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1449169075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1449169076}
+  - component: {fileID: 1449169077}
+  m_Layer: 0
+  m_Name: Sword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1449169076
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449169075}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 875387062}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1449169077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449169075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed3042d16c8f01b4e8512fd4f6a1d7fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Starter Sword
+  minDamage: 3
+  maxDamage: 7
 --- !u!1 &1660679857
 GameObject:
   m_ObjectHideFlags: 0
